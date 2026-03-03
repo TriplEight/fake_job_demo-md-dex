@@ -3,13 +3,19 @@
 **This is an active malware. Do not run this code.**
 
 # Combined Attack Analysis
+
 ## AI Prompt-Injection × EJS Server-Side Template Injection (CVE-2022-29078)
 
 **Original Repository:** `mike-dancey/dex` (original, now banned from GitHub)
+
 **Reference:** Dependabot alert, `SECURITY_REPORT.md`
+
 **Tools:** Dependabot, CodeQL, Claude (Sonnet 4.6)
+
 **CVE:** CVE-2022-29078 — EJS `outputFunctionName` SSTI → RCE
+
 **Analysis Date:** 2026-03-03
+
 **Status:** ⚠️ HIGH-SEVERITY COMBINED EXPLOIT — Do not run `npm install` or any project commands
 
 ---
