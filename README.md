@@ -1,3 +1,35 @@
+# ⚠️ Security Analysis Report — "Fake Job Demo" DEX
+
+**This is an active malware. Do not run this code.**
+
+# Combined Attack Analysis
+## AI Prompt-Injection × EJS Server-Side Template Injection (CVE-2022-29078)
+
+**Original Repository:** `mike-dancey/dex` (original, now banned from GitHub)
+**Reference:** Dependabot alert, `SECURITY_REPORT.md`
+**Tools:** Dependabot, CodeQL, Claude (Sonnet 4.6)
+**CVE:** CVE-2022-29078 — EJS `outputFunctionName` SSTI → RCE
+**Analysis Date:** 2026-03-03
+**Status:** ⚠️ HIGH-SEVERITY COMBINED EXPLOIT — Do not run `npm install` or any project commands
+
+---
+
+## 1. Why These Two Findings Belong Together
+
+Read in isolation, each finding sounds contained:
+
+- The `.cursorignore` issue looks like a privacy nuisance — the AI editor reads your `.env` files.
+- The EJS vulnerability looks like a routine transitive-dependency CVE — one old package buried deep.
+
+**Together they form a coherent, two-stage remote code execution chain.** The `.cursorignore` manipulation primes an AI assistant to become an unwitting attack delivery mechanism; the EJS vulnerability provides the actual execution primitive. A developer running this project as a "take-home interview task" can have their machine compromised without ever clicking a phishing link or running an obviously suspicious command.
+
+All details in [SECURITY_REPORT.md](./SECURITY_REPORT.md).
+
+---
+
+<details>
+<summary>Original description - don't trust it</summary>
+
 # 🚀 DEX - 去中心化交易所
 
 > 基于 UniswapV2 的企业级 DEX 实现，采用现代化技术栈，完全开源。
@@ -263,3 +295,5 @@ MIT License - 详见 [LICENSE](./LICENSE)
 🔒 **安全第一** - 完善的权限控制和输入验证  
 🧪 **测试完整** - 单元测试 + 集成测试 + E2E 测试  
 🎨 **现代化 UI** - Ant Design + 响应式设计
+
+</details>
